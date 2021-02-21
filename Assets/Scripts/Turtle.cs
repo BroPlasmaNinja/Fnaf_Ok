@@ -3,17 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Snake : MonoBehaviour
+public class Turtle : MonoBehaviour
 {
     [SerializeField] private GameObject PointArray;
     private NavMeshAgent agent;
     [SerializeField] private bool MoveInStart = false;
-    [SerializeField] [Range(0,3600)] private int Timer = 0;
-    private float tim;
+    private bool Rage = false;
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        tim = Timer;
 
         if (MoveInStart)
         {
@@ -22,17 +20,13 @@ public class Snake : MonoBehaviour
         }
     }
 
+    // Update is called once per frame
     void Update()
     {
-        if (agent.remainingDistance <= agent.stoppingDistance && tim >= 0)
-        {
-            tim -= Time.deltaTime;
-        }
-        if (agent.remainingDistance <= agent.stoppingDistance && tim <= 0)
+        if (agent.remainingDistance <= agent.stoppingDistance)
         {
             int a = Random.Range(0, PointArray.transform.childCount);
             agent.SetDestination(PointArray.transform.GetChild(a).GetChild(Random.Range(0, PointArray.transform.GetChild(a).childCount)).position);
-            tim = Timer;
         }
     }
 }

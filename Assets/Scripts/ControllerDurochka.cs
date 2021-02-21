@@ -32,6 +32,9 @@ public class ControllerDurochka : MonoBehaviour
     //Запоминаем где на карте планшет
     private GameObject ps;
 
+    //Чисто для некоторых тестов
+    [SerializeField] private bool Test = false;
+
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -75,39 +78,42 @@ public class ControllerDurochka : MonoBehaviour
         /*А здеся интерактив ПРИРКИНЬ. ВЗАИМОДЕЙСТВИЕ!!!*/
         /*    У нас можно нажимать кнопочки в мире      */
         /************************************************/
-        if (Input.GetMouseButtonDown(1))
+        if (!Test)
         {
-            //Я сам хз как райкаст работает, НО он работает так что не трож 
-            if (Physics.Raycast(gameObject.transform.GetChild(0).GetComponent<Camera>().ViewportToWorldPoint(new Vector3(0.5f,0.5f)),gameObject.transform.GetChild(0).transform.forward,out hit,lenghtOfHand))
+            if (Input.GetMouseButtonDown(1))
             {
-                //проверяем на скрипт планшет объект в который попал райкаст
-                if(hit.transform.GetComponent<PlanShit>() != null)
+                //Я сам хз как райкаст работает, НО он работает так что не трож 
+                if (Physics.Raycast(gameObject.transform.GetChild(0).GetComponent<Camera>().ViewportToWorldPoint(new Vector3(0.5f, 0.5f)), gameObject.transform.GetChild(0).transform.forward, out hit, lenghtOfHand))
                 {
-                    //зачемтоздесьстоит
-                    planShit = true;
+                    //проверяем на скрипт планшет объект в который попал райкаст
+                    if (hit.transform.GetComponent<PlanShit>() != null)
+                    {
+                        //зачемтоздесьстоит
+                        planShit = true;
 
-                    //ну дэб баг
-                    Debug.LogWarning("ОПАСНО!!!! Игрок поднял планшет");
+                        //ну дэб баг
+                        Debug.LogWarning("ОПАСНО!!!! Игрок поднял планшет");
 
-                    //планшет пропал не осезаем но он существует в 16-ом измерении
-                    ps = hit.transform.gameObject;
-                    ps.GetComponent<MeshRenderer>().enabled = false;
-                    ps.GetComponent<BoxCollider>().enabled = false;
-                }
-                if(hit.transform.GetComponent<Door>() != null)
-                {
-                    hit.transform.GetComponent<Door>().Turn();
+                        //планшет пропал не осезаем но он существует в 16-ом измерении
+                        ps = hit.transform.gameObject;
+                        ps.GetComponent<MeshRenderer>().enabled = false;
+                        ps.GetComponent<BoxCollider>().enabled = false;
+                    }
+                    if (hit.transform.GetComponent<Door>() != null)
+                    {
+                        hit.transform.GetComponent<Door>().Turn();
+                    }
                 }
             }
-        }
 
-        //Alt+F4 чтобы достать планшет
-        if (Input.GetKeyDown(KeyCode.Space) && planShit == true)
-        {
-            //тут и так понятно
-            Debug.Log("Поднеми планшет");
-            ps.GetComponent<PlanShit>().enabled = true;
-            ps.GetComponent<PlanShit>().Interact();
+            //Alt+F4 чтобы достать планшет
+            if (Input.GetKeyDown(KeyCode.Space) && planShit == true)
+            {
+                //тут и так понятно
+                Debug.Log("Поднеми планшет");
+                ps.GetComponent<PlanShit>().enabled = true;
+                ps.GetComponent<PlanShit>().Interact();
+            }
         }
     }
 }

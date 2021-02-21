@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\Door.cs" />
     <Compile Include="Assets\Scripts\PlanShit.cs" />
     <Compile Include="Assets\Scripts\Snake.cs" />
+    <Compile Include="Assets\Scripts\Turtle.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.20f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

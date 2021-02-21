@@ -1111,6 +1111,7 @@ MonoBehaviour:
   Canvas: {fileID: 369006958}
   speed: 7
   lenghtOfHand: 5
+  Test: 0
 --- !u!143 &282367644
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2806,7 +2807,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15cceeae9bcf1bc468aae44b7dfbbcc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  door: 1
+  door: 0
   use: 0
   Doorm: {fileID: 1607106436}
   op: {fileID: 2100000, guid: 66221d771a0c62a48903746c55926b7d, type: 2}
@@ -3487,8 +3488,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PointArray: {fileID: 1420337888}
-  timer: 60
   MoveInStart: 1
+  Timer: 5
 --- !u!1 &850556789
 GameObject:
   m_ObjectHideFlags: 0
@@ -5728,7 +5729,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1607106436}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.98, y: 3.1899996, z: -3.7000003}
+  m_LocalPosition: {x: 0.98, y: 10.06, z: -3.7000003}
   m_LocalScale: {x: 4, y: 7, z: 0.4}
   m_Children: []
   m_Father: {fileID: 0}

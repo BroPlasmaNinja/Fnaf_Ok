@@ -8,15 +8,13 @@ public class Door : MonoBehaviour
     public bool door = true;// тру=закрыто фолз=открыто
     public bool use = false; // юзали кнопку или нет
     [SerializeField] GameObject Doorm;//где дверь? вот дверь
-    [SerializeField] Material op;
-    [SerializeField] Material cl;
+    [SerializeField] Material op;//Зелёный
+    [SerializeField] Material cl;//Красный
     void Start()
     {
-        Doorm.GetComponent<Animation>().Play("open door");// со старта открываем
-        door = false;// подтверждаем что дверь открыта
+        //Просто изначально делаем открытой чел
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (door == false && use == true)
@@ -36,6 +34,7 @@ public class Door : MonoBehaviour
     }
     public void Turn()
     {
+        if(Doorm.transform.position.y >= 10f|| Doorm.transform.position.y <= 3.2f)
         use = true;
     }
 }
