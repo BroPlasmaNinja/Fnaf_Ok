@@ -76,14 +76,16 @@ public class Turtle : MonoBehaviour
             if(test)
             gameObject.GetComponent<Renderer>().material = TestY;
         }
+        //if()
     }
     //Если мы попали в поле зрения и отобразились на мониторе то вызывается этот метод
-    private void OnBecameVisible()
+    /*private void OnBecameVisible()
     {
         //ладно не обижаюсь, но это пока
         rage = false;
 
         //Остановим его пыл
+        agent.speed = 0f;
 
         //если тест то красим в зелёный
         if(test)
@@ -94,5 +96,10 @@ public class Turtle : MonoBehaviour
     {
         //Ну ок пусть ходит раз мы его не видим
         agent.speed = 3.5f;
+        
+    }*/
+    public bool IsObjectVisible( UnityEngine.Camera @this, Renderer renderer)
+    {
+        return GeometryUtility.TestPlanesAABB(GeometryUtility.CalculateFrustumPlanes(@this), renderer.bounds);
     }
 }
