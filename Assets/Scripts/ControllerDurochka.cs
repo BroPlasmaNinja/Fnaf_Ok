@@ -5,7 +5,7 @@ using UnityEngine;
 public class ControllerDurochka : MonoBehaviour
 {
     //Это сенса мыши подёргай чтобы норм было
-    [SerializeField][Range(0f,100000f)]private float sensa = 100f;
+    [SerializeField][Range(0f,100000f)]private float sencivity = 100f;
 
     /************************/
     /*Это табличные значения*/
@@ -15,7 +15,8 @@ public class ControllerDurochka : MonoBehaviour
     /************************/
 
     /*************************************************/
-    /****************/float RotX = 0f;/***************/
+    /*****************/float angleY;/*****************/
+    /*****************/float angleX;/*****************/
     /*****/public CharacterController controllor;/****/
     /*****************/RaycastHit hit;/***************/
     /*********/private bool planShit = false;/********/
@@ -42,7 +43,7 @@ public class ControllerDurochka : MonoBehaviour
     }
     void Update()
     {
-        
+
 
         #region RotOfCumAndHero
 
@@ -52,15 +53,16 @@ public class ControllerDurochka : MonoBehaviour
         /*Это чудо-юдо-рыба-CUM или по нормальному камера контреллер*/
         /*            контролит cumеру поворот ес точнее            */
         /************************************************************/
-        float mouseX = Input.GetAxis("Mouse X") * sensa * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * sensa * Time.deltaTime;
+        var mouseX = Input.GetAxis("Mouse X") * sencivity;
+        var mouseY = Input.GetAxis("Mouse Y") * sencivity;
 
-        RotX -= mouseY;
+        angleY += mouseX;
+        angleX -= mouseY;
 
-        RotX = Mathf.Clamp(RotX, -80f, 80f);
+        angleX = Mathf.Clamp(angleX, -60, 60);
 
-        gameObject.transform.GetChild(0).transform.localRotation = Quaternion.Euler(RotX, 0f, 0f);
-        transform.Rotate(0,mouseX,0);
+        gameObject.transform.localRotation = Quaternion.Euler(0, angleY, 0);
+        transform.GetChild(0).localRotation = Quaternion.Euler(angleX, 0, 0);
         /**********************************/
         /*Это перемещение нашей полторашки*/
         /*        или как там его         */

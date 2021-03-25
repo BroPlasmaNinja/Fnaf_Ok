@@ -1107,7 +1107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32fea3e0ebc25d94fb00c40c21895462, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensa: 500
+  sencivity: 10
   controllor: {fileID: 282367644}
   Canvas: {fileID: 369006958}
   speed: 7
@@ -3389,7 +3389,7 @@ GameObject:
   - component: {fileID: 826804954}
   - component: {fileID: 826804958}
   - component: {fileID: 826804960}
-  m_Layer: 9
+  m_Layer: 2
   m_Name: Turtle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3511,6 +3511,7 @@ MonoBehaviour:
   TestY: {fileID: 2100000, guid: 6b68aec112084d24983fde61abcdec6c, type: 2}
   TestR: {fileID: 2100000, guid: 92e48a99d42ad7f4e86ec6583133535b, type: 2}
   test: 0
+  gg: {fileID: 282367637}
 --- !u!1 &850556789
 GameObject:
   m_ObjectHideFlags: 0
@@ -3859,7 +3860,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 20
+  far clip plane: 999
   field of view: 60
   orthographic: 0
   orthographic size: 5

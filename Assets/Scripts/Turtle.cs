@@ -17,8 +17,6 @@ public class Turtle : MonoBehaviour
     //ну всё тебе пиздец
     private bool Rage = false;
 
-    //Просто таймер
-    private float timer;
 
     [SerializeField][Range(0,3600)]private int StayOnStart = 0;
 
@@ -30,6 +28,9 @@ public class Turtle : MonoBehaviour
     [SerializeField] private Material TestR;
     //тест режим
     [SerializeField] private bool test = false;
+
+    [SerializeField] GameObject gg;
+    private IEnumerator da;
     void Start()
     {
         //у меня дежавю...
@@ -76,30 +77,44 @@ public class Turtle : MonoBehaviour
             if(test)
             gameObject.GetComponent<Renderer>().material = TestY;
         }
-        //if()
+        
     }
     //Если мы попали в поле зрения и отобразились на мониторе то вызывается этот метод
-    /*private void OnBecameVisible()
+    private void OnBecameVisible()
     {
-        //ладно не обижаюсь, но это пока
-        rage = false;
-
-        //Остановим его пыл
-        agent.speed = 0f;
-
-        //если тест то красим в зелёный
-        if(test)
-        gameObject.GetComponent<Renderer>().material = TestG;
+        StartCoroutine("dada");
     }
     //когда перестали видеть
     private void OnBecameInvisible()
     {
-        //Ну ок пусть ходит раз мы его не видим
-        agent.speed = 3.5f;
-        
-    }*/
+        StopAllCoroutines();
+            //Ну ок пусть ходит раз мы его не видим
+            agent.speed = 3.5f;
+    }
     public bool IsObjectVisible( UnityEngine.Camera @this, Renderer renderer)
     {
         return GeometryUtility.TestPlanesAABB(GeometryUtility.CalculateFrustumPlanes(@this), renderer.bounds);
+    }
+    private IEnumerator dada()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(0.01f);
+            RaycastHit hit;
+            Physics.Raycast(transform.position, gg.transform.position - transform.position, out hit);
+            Debug.DrawRay(transform.position, gg.transform.position-transform.position, Color.red);
+            if (hit.transform.tag == "Player")
+            {
+                //ладно не обижаюсь, но это пока
+                rage = false;
+
+                //Остановим его пыл
+                agent.speed = 0f;
+
+                //если тест то красим в зелёный
+                if (test)
+                    gameObject.GetComponent<Renderer>().material = TestG;
+            }
+        }
     }
 }
